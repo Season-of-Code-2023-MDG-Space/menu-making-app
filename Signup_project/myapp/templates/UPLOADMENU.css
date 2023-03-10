@@ -1,5 +1,5 @@
 *{
-    background-color:bisque
+    background-color:bisque;
 }
 
 .Meesy{
@@ -22,4 +22,8 @@
 .TOPNAV .UPLOADDISHES{
     border-style: solid;
     border-radius: 9px;
+}
+
+#addsnacks:hover, #addnormal:hover, #addgravy:hover, #addsweets:hover{
+    background: #fff;
 }

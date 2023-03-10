@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <!--<link rel="stylesheet" href="login css.css">-->
+</head>
+<body>
+    <div class="alert-box">
+        <p class="alert"></p>
+    </div>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <!--
+        <h1 class="heading">Register</h1>
+        <input type="text" placeholder="Username" autocomplete="off" class="username" name="username" id="username" required>
+        <input type="email" placeholder="Email" autocomplete="off" class="email" name="email" id="email" required>
+        <input type="password" placeholder="Password" autocomplete="off" class="password" name="password" id="password" required>
+        <button class="submit">Register</button>
+        <a href="login.html" class="link">already have an account ? log in here</a>-->
+
+        <input type="submit" value="submit">
+    </form>
+
+</body>
+</html>

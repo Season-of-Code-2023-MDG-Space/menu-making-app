@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messy</title>
+    <style>
+        *{
+    background-color:bisque;
+}
+
+.Meesy{
+    font-style: italic;
+    text-align: center;
+}
+
+.TOPNAV a{
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding-left: 20px;
+}
+
+.TOPNAV .UPLOADDISHES{
+    border-style: solid;
+    border-radius: 9px;
+}
+
+#addsnacks:hover, #addnormal:hover, #addgravy:hover, #addsweets:hover{
+    background: #fff;
+}
+    </style>
+</head>
+<body>
+    <!--FORMAT-->
+    <div class="Meesy"><h1>Meesy</h1></div>
+
+    <div class="TOPNAV">
+        <a href="/" class="HOME">HOME</a>
+        <a href="profile" class="PROFILE">PROFILE</a>
+        <a href="createchart" class="CREATECHART">CREATE CHART</a>
+        <a href="uploadmenu" class="UPLOADDISHES">UPLOAD DISHES</a>
+    </div>
+<br><br><br><br>
+<!--Taking menu items in list-->
+    <div class="mainpart">
+        <div class="snacks">
+            <h3>#SNACKS</h3>
+            <button id="addsnacks">+</button>
+        </div>
+        <div class="veggie">
+            <h3>#VEGGIE</h3>
+            <div class="normal">
+            <h4>NORMAL</h4>
+            <button id="addnormal">+</button>
+            </div>
+            <div class="gravy">
+            <h4>GRAVY</h4>
+            <button id="addgravy">+</button>
+            </div>
+        </div>
+        <div class="sweets">
+            <h3>#SWEETS</h3>
+            <button id="addsweets">+</button>
+        </div>
+    </div>
+
+<script src="JS/UPLOADMENU.js"></script>
+</body>
+</html>
