@@ -1,65 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messy</title>
-    <style>
-        *{
-    background-color: bisque;
-}
-
-.Meesy{
-    font-style: italic;
-    text-align: center;
-}
-
-.TOPNAV a{
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    padding-left: 20px;
-}
-
-.TOPNAV .PROFILE{
+<style>
+.TOPNAV .PROFILE  {
     border-style: solid;
     border-radius: 9px;
 }
 
-.details .followers{
-    
-}
-    </style>
-</head>
-<body>
-    <!--FORMAT-->
-    <div class="Meesy"><h1>Meesy</h1></div>
+</style>
+{% extends 'base.html' %}
 
-    <div class="TOPNAV">
-        <a href="/" class="HOME">HOME</a>
-        <a href="profile" class="PROFILE">PROFILE</a>
-        <a href="createchart" class="CREATECHART">CREATE CHART</a>
-        <a href="uploadmenu" class="UPLOADDISHES">UPLOAD DISHES</a>
-    </div>
+{% block content %}
+<div class="username"><h3>TANISH GOYAL</h3></div>
+<div class="bio">Bio: Dietitian</div>
 
-    <br><br><br><br><br>
-    <div class="details">
-        <div class="username">USERNAME</div>
-        <div class="followers">
-            <div class="11">11</div>
-            <div class="Followers">Followers</div>
-        </div>
-        <div class="following">
-            <div class="111">111</div>
-            <div class="Following">Following</div>
-        </div>
-    </div>
+<br><br>
+<h4>Posts</h4>
+<br>
+<div class="chart">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WEDN</th>
+                <th>THUR</th>
+                <th>FRI</th>
+                <th>SAT</th>
+                <th>SUN</th>
+            </tr>
 
-</body>
-</html>
+            <tr>
+                <th>BREAKFAST</th>
+                <td >Sprouts
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td >Idli-Sambhar
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td >
+                CornFlakes
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td >Uttpam
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td >
+                Channa-Chart
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td >Fruits
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td >
+                 Parantha
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+            </tr>
+
+            <tr>
+                <th>LUNCH</th>
+                <td >
+                <br>
+               
+                   Alu-Sabzi
+                    
+                
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                
+                <td >
+                <br>
+                Alu-Gobi
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                Chole
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                
+                   Pyaz-Tamatar
+                
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                Shahi-Panner
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                Tawa-Veg
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                Moong-Dal
+                <br>Roti <br> Pickle<br> Salad <br><br>
+
+                </td>
+            </tr>
+
+            <tr>
+                <th>DINNER</th>
+                <td >
+                <br>
+                Arhar-dal
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                Kheer
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                Veg-Kofta
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                Gulab-Jamun
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                Egg-Curry
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                Malpua
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                Masoor-dal
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                Rasbarry
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                Kadi-Pakodi
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                Icecream
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                Rajma
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                Mala-Burfi
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                Malai-Kofta
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                Chocolate
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<br><br>
+
+{% endblock %}

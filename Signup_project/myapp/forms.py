@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Normal, Gravy, Sweets, Snacks
 
 class signupform(UserCreationForm):
     first_name = forms.CharField(max_length=50)
@@ -20,3 +21,28 @@ class signupform(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class GravyVeggie(forms.ModelForm):
+  class Meta:
+       model = Gravy
+       fields = ["gravy",]
+       labels = {'gravy': "ADD NEW DISH",}
+
+class SnacksMany(forms.ModelForm):
+  class Meta:
+       model = Snacks
+       fields = ["snacks",]
+       labels = {'snacks': "ADD NEW DISH",}
+
+class SweetsMany(forms.ModelForm):
+  class Meta:
+       model = Sweets
+       fields = ["sweets",]
+       labels = {'sweets': "ADD NEW DISH",}
+
+class NormalVeggie(forms.ModelForm):
+  class Meta:
+       model = Normal
+       fields = ["fullname",]
+       labels = {'fullname': "ADD NEW DISH",}
+ 

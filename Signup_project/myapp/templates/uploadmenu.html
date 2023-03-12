@@ -1,76 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messy</title>
-    <style>
-        *{
-    background-color:bisque;
-}
-
-.Meesy{
-    font-style: italic;
-    text-align: center;
-}
-
-.TOPNAV a{
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    padding-left: 20px;
-}
-
-.TOPNAV .UPLOADDISHES{
+<style>
+.TOPNAV .UPLOADDISHES  {
     border-style: solid;
     border-radius: 9px;
 }
 
-#addsnacks:hover, #addnormal:hover, #addgravy:hover, #addsweets:hover{
-    background: #fff;
-}
-    </style>
-</head>
-<body>
-    <!--FORMAT-->
-    <div class="Meesy"><h1>Meesy</h1></div>
+</style>
+{% extends 'base.html' %}
 
-    <div class="TOPNAV">
-        <a href="/" class="HOME">HOME</a>
-        <a href="profile" class="PROFILE">PROFILE</a>
-        <a href="createchart" class="CREATECHART">CREATE CHART</a>
-        <a href="uploadmenu" class="UPLOADDISHES">UPLOAD DISHES</a>
-    </div>
-<br><br><br><br>
-<!--Taking menu items in list-->
-    <div class="mainpart">
-        <div class="snacks">
-            <h3>#SNACKS</h3>
-            <button id="addsnacks">+</button>
-        </div>
-        <div class="veggie">
-            <h3>#VEGGIE</h3>
-            <div class="normal">
-            <h4>NORMAL</h4>
-            <button id="addnormal">+</button>
-            </div>
-            <div class="gravy">
-            <h4>GRAVY</h4>
-            <button id="addgravy">+</button>
-            </div>
-        </div>
-        <div class="sweets">
-            <h3>#SWEETS</h3>
-            <button id="addsweets">+</button>
-        </div>
+{% block content %}
+<br>
+
+
+<h3>NORMAL-VEGGIES</h3>
+<form   method="POST">
+    {% csrf_token %}
+    
+    <div class="lass">
+        {% for data in dataset1 %}
+        <tr>
+        
+        <td> - {{ data.fullname }}</td>
+        <td><a href="delete/{{ data.id }}">delete</a></td> <br>
+        </tr>
+        {% endfor %}
     </div>
 
-<script src="JS/UPLOADMENU.js"></script>
-</body>
-</html>
+    {{form1.as_p}}
+    <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
+
+<br>
+<h3>GRAVY-SABJI</h3>
+<form   method="POST">
+    {% csrf_token %}
+    
+    <div class="lass">
+        {% for data in dataset2 %}
+        <tr>
+        
+        <td> - {{ data.gravy }}</td>
+        <td><a href="delete2/{{ data.id }}">delete</a></td> <br>
+        </tr>
+        {% endfor %}
+    </div>
+
+    {{form2.as_p}}
+    <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
+
+<br>
+<h3>SNACKS</h3>
+<form   method="POST">
+    {% csrf_token %}
+    
+    <div class="lass">
+        {% for data in dataset3 %}
+        <tr>
+        
+        <td> - {{ data.snacks }}</td>
+        <td><a href="delete3/{{ data.id }}">delete</a></td> <br>
+        </tr>
+        {% endfor %}
+    </div>
+
+    {{form3.as_p}}
+    <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
+
+<br>
+<h3>SWEETS</h3>
+<form   method="POST">
+    {% csrf_token %}
+    
+    <div class="lass">
+        {% for data in dataset4 %}
+        <tr>
+        
+        <td> - {{ data.sweets }}</td>
+        <td><a href="delete4/{{ data.id }}">delete</a></td><br>
+        </tr>
+        {% endfor %}
+    </div>
+
+    {{form4.as_p}}
+    <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
+
+</form>
+
+{% endblock %}
+

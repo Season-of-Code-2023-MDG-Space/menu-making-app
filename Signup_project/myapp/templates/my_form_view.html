@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="lass">
+    {% for data in dataset %}
+
+    {{ data.fullname }} <br>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

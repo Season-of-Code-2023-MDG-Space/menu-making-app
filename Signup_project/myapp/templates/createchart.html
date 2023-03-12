@@ -1,120 +1,444 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messy</title>
-    <style>
-        *{
-    background-color:bisque;
-}
-
-.Meesy{
-    font-style: italic;
-    text-align: center;
-}
-
-.TOPNAV a{
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    padding-left: 20px;
-}
-
-.TOPNAV .CREATECHART{
+<style>
+.TOPNAV .CREATECHART  {
     border-style: solid;
     border-radius: 9px;
 }
 
-table, th, td{
-    border: solid;
-    border-collapse: collapse;
-    
-}
 
-.chart{
-    
-}
 
-.create{
-    text-align: center;
-}
-    </style>
-</head>
-<body>
-    <!--FORMAT-->
-    <div class="Meesy"><h1>Meesy</h1></div>
+</style>
 
-    <div class="TOPNAV">
-        <a href="/" class="HOME">HOME</a>
-        <a href="profile" class="PROFILE">PROFILE</a>
-        <a href="createchart" class="CREATECHART">CREATE CHART</a>
-        <a href="uploadmenu" class="UPLOADDISHES">UPLOAD DISHES</a>
-    </div>
-    
-    <!--create tab-->
-    <div class="create">
-        <button >
-            CREATE
-        </button>
-    </div>
-  
-    <!--chart maker-->
-    <div class="chart">
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>MON</th>
-                    <th>TUE</th>
-                    <th>WEDN</th>
-                    <th>THUR</th>
-                    <th>FRI</th>
-                    <th>SAT</th>
-                    <th>SUN</th>
-                </tr>
+{% extends 'base.html' %}
 
-                <tr>
-                    <th>BREAKFAST</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
+{% block content %}
 
-                <tr>
-                    <th>LUNCH</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
+<h3>Create Your Own Favorite chart !!</h3>
+<br> <br>
+<!--chart maker-->
+<div class="chart">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WEDN</th>
+                <th>THUR</th>
+                <th>FRI</th>
+                <th>SAT</th>
+                <th>SUN</th>
+            </tr>
 
-                <tr>
-                    <th>DINNER</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+            <tr>
+                <th>BREAKFAST</th>
+                <td ><select name="breakfast" id="breakfast">
+                    <option> Choose </option>
+                   {% for data in dataset3 %}
+                    <option value="{{data.snacks.id}}">{{data.snacks}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                   
+                </select>
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td ><select name="breakfast" id="breakfast">
+                    <option> Choose </option>
+                   {% for data in dataset3 %}
+                    <option value="{{data.snacks.id}}">{{data.snacks}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                   
+                </select>
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td ><select name="breakfast" id="breakfast">
+                    <option> Choose </option>
+                   {% for data in dataset3 %}
+                    <option value="{{data.snacks.id}}">{{data.snacks}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                   
+                </select>
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td ><select name="breakfast" id="breakfast">
+                    <option> Choose </option>
+                   {% for data in dataset3 %}
+                    <option value="{{data.snacks.id}}">{{data.snacks}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                   
+                </select>
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td ><select name="breakfast" id="breakfast">
+                    <option> Choose </option>
+                   {% for data in dataset3 %}
+                    <option value="{{data.snacks.id}}">{{data.snacks}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                   
+                </select>
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td ><select name="breakfast" id="breakfast">
+                    <option> Choose </option>
+                   {% for data in dataset3 %}
+                    <option value="{{data.snacks.id}}">{{data.snacks}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                   
+                </select>
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+                <td ><select name="breakfast" id="breakfast">
+                    <option> Choose </option>
+                   {% for data in dataset3 %}
+                    <option value="{{data.snacks.id}}">{{data.snacks}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                   
+                </select>
+                <br>
+                Doodh <br>
+                Dalia <br>
+                Bread <br>
+                Butter <br>
+                </td>
+            </tr>
 
-</body>
-</html>
+            <tr>
+                <th>LUNCH</th>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Veggie </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Veggie </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Veggie </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Veggie </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Veggie </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Veggie </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Salad <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Veggie </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Salad <br><br>
+
+                </td>
+            </tr>
+
+            <tr>
+                <th>DINNER</th>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sabzi </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sweets </option>
+                   {% for data in dataset4 %}
+                    <option value="{{data.sweets.id}}">{{data.sweets}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sabzi </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sweets </option>
+                   {% for data in dataset4 %}
+                    <option value="{{data.sweets.id}}">{{data.sweets}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sabzi </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sweets </option>
+                   {% for data in dataset4 %}
+                    <option value="{{data.sweets.id}}">{{data.sweets}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sabzi </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sweets </option>
+                   {% for data in dataset4 %}
+                    <option value="{{data.sweets.id}}">{{data.sweets}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sabzi </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sweets </option>
+                   {% for data in dataset4 %}
+                    <option value="{{data.sweets.id}}">{{data.sweets}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sabzi </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sweets </option>
+                   {% for data in dataset4 %}
+                    <option value="{{data.sweets.id}}">{{data.sweets}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                <td >
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sabzi </option>
+                   {% for data in dataset1 %}
+                    <option value="{{data.fullname.id}}">{{data.fullname}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                   {% for data in dataset2 %}
+                    <option value="{{data.gravy.id}}">{{data.gravy}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br>
+                <select name="breakfast" id="breakfast">
+                    <option> Sweets </option>
+                   {% for data in dataset4 %}
+                    <option value="{{data.sweets.id}}">{{data.sweets}} </option>
+                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    {% endfor %}
+                    
+                </select>
+                <br>Roti <br> Pickle<br> Pyaaz <br><br>
+                
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<br><br>
+
+<div class="deploy">
+    <button >
+        Add To Post
+    </button>
+</div>
+
+{% endblock %}

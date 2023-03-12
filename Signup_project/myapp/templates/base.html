@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEESY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+                *{
+    background-color: rgb(57,57,59);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.Meesy{
+    font-style: italic;
+    text-align: center;
+}
+
+chart table, th, td{
+    border-style: solid;
+    align-text: center;
+    justify-: center;
+   
+    border-collapse: collapse;
+}
+
+
+.TOPNAV a{
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding-left: 20px;
+}
+
+
+
+
+.content{
+    
+    padding-top: 30px;
+}
+#badmos{
+    color:white;
+    background-color:white;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="Meesy"><h1>Meesy</h1></div>
+
+    <div class="TOPNAV">
+        <a href="next" class="HOME">HOME</a>
+        <a href="profile" class="PROFILE">PROFILE</a>
+        <a href="createchart" class="CREATECHART">CREATE CHART</a>
+        <a href="uploadmenu" class="UPLOADDISHES">UPLOAD DISHES</a>
+    </div>
+
+    <br><br><br>
+    <div class="content" name="content" id="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>
