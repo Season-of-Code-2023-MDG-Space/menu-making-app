@@ -1,0 +1,69 @@
+<style>
+.TOPNAV .CREATECHART  {
+    border-style: solid;
+    border-radius: 9px;
+}
+</style>
+
+{% extends 'base.html' %}
+
+{% block content%}
+	<h1>Menu</h1>
+	<h2> {{ls.name}} </h2>
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Save</button>
+	</form>
+
+	<h1>Menu Chart</h1>
+	<a href="automatic">AutoCreate</a>
+	<table>
+		<thead>
+			<tr>
+				<th>Day</th>
+				<th>Breakfast</th>
+				<th>Lunch</th>
+				<th>Dinner</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for day, meals in menu_chart.items %}
+				<tr>
+					<td>{{ day }}</td>
+					{% for meal, item in meals.items %}
+						<td>{{ item }} <br> </td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="post_it">Post</a>
+
+	<h2>Current Menu</h2>
+	{% if menu_item %}
+		<table>
+			<thead>
+				<tr>
+					<th>Day</th>
+					<th>Meal</th>
+					<th>Item</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in menu_item %}
+					<tr>
+						<td>{{ item.day }}</td>
+						<td>{{ item.meal }}</td>
+						<td>{{ item.item }}</td>
+						<td><a href="deletemenu/{{ item.id }}">delete</a></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p>No items in the menu yet.</p>
+	{% endif %}
+{% endblock %}
+</html>

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Normal, Gravy, Sweets, Snacks
+from .models import Normal, Gravy, Sweets, Snacks, Breakfast, MenuItem, Post
 
 class signupform(UserCreationForm):
     first_name = forms.CharField(max_length=50)
@@ -27,22 +27,51 @@ class GravyVeggie(forms.ModelForm):
        model = Gravy
        fields = ["gravy",]
        labels = {'gravy': "ADD NEW DISH",}
+       widgets = {'owner': forms.HiddenInput()}
+       required = {
+           "gravy":False,
+       }
 
 class SnacksMany(forms.ModelForm):
   class Meta:
        model = Snacks
        fields = ["snacks",]
        labels = {'snacks': "ADD NEW DISH",}
+       widgets = {'owner': forms.HiddenInput()}
+       required = {
+           "snacks":False,
+       }
 
 class SweetsMany(forms.ModelForm):
   class Meta:
        model = Sweets
        fields = ["sweets",]
        labels = {'sweets': "ADD NEW DISH",}
+       widgets = {'owner': forms.HiddenInput()}
+       required = {
+           "sweets":False,
+       }
 
 class NormalVeggie(forms.ModelForm):
   class Meta:
        model = Normal
        fields = ["fullname",]
        labels = {'fullname': "ADD NEW DISH",}
- 
+       widgets = {'owner': forms.HiddenInput()}
+       required = {
+           "fullname":False,
+       }
+
+class Morning(forms.ModelForm):
+    class Meta:
+      model = Breakfast
+      fields = ["breakfast"]
+      widgets = {'owner': forms.HiddenInput()}
+      
+class MenuItemForm(forms.ModelForm):
+    class Meta:
+        model = MenuItem
+        fields = [ 'day', 'meal', 'item']
+        widgets = {'owner': forms.HiddenInput()}
+
+

@@ -1,13 +1,15 @@
 from django.shortcuts import render,redirect
 from .forms import signupform
-from .forms import NormalVeggie, GravyVeggie, SnacksMany, SweetsMany
+from .forms import NormalVeggie, GravyVeggie, SnacksMany, SweetsMany, MenuItemForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
-from .models import Normal, Gravy, Sweets, Snacks
-from django.http import HttpResponse, HttpResponseRedirect
+from .models import Normal, Gravy, Sweets, Snacks, MenuItem, Post, MenuName
+from django.http import HttpResponse, HttpResponseRedirect, response
 from django.urls import reverse_lazy
 from django.template import loader
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 @csrf_exempt
 
@@ -33,14 +35,31 @@ def Login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request,user)
-            return redirect('next')
+            return redirect('myapp:next')
+
     return render(request, 'login.html')
     
 def Next(request):
     return render(request, 'next.html')
 
 def Profile(request):
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    meals = ['Breakfast', 'Lunch', 'Dinner']
+    menu_chart = {}
+    for day in days:
+        menu_chart[day] = {}
+        for meal in meals:
+            menu_avialable = MenuItem.objects.filter(day=day[:3].lower(), meal=meal.lower(), owner=request.user)
+           
+            if menu_avialable:
+                menu_chart[day][meal] = menu_avialable[0].item
+            else:
+                menu_chart[day][meal] = '-'
+    # huehue = MenuItem.objects.filter(owner=request.user)
+   
     return render(request, 'profile.html')
+
+    
 
 def Createchart(request):
     context={}
@@ -95,29 +114,40 @@ def my_form(request):
     form2 = GravyVeggie(request.POST or None)
     form3 = SnacksMany(request.POST or None)
     form4 = SweetsMany(request.POST or None)
-    if form1.is_valid():
-        form1.save()
-
-    context['form1']= form1
-    context["dataset1"] = Normal.objects.all()
-
-    if form2.is_valid():
-        form2.save()
-
-    context['form2']= form2
-    context["dataset2"] = Gravy.objects.all()
-
-    if form3.is_valid():
-        form3.save()
-
-    context['form3']= form3
-    context["dataset3"] = Snacks.objects.all()
+    if form1.is_valid() and form1.cleaned_data['fullname']:
+        normall = form1.save(commit=False)
+        normall.owner = request.user
+        normall.save()
+        
     
-    if form4.is_valid():
-        form4.save()
+    context['form1']= form1
+    context["dataset1"] = Normal.objects.filter(owner=request.user)
 
+    if form2.is_valid() and form2.cleaned_data['gravy']:
+        gravyy = form2.save(commit=False)
+        gravyy.owner = request.user
+        gravyy.save()
+        
+    
+    context['form2']= form2
+    context["dataset2"] = Gravy.objects.filter(owner=request.user)
+
+    if form3.is_valid() and form3.cleaned_data['snacks']:
+        snackss = form3.save(commit=False)
+        snackss.owner = request.user
+        snackss.save()
+        
+    
+    context['form3']= form3
+    context["dataset3"] = Snacks.objects.filter(owner=request.user)
+    if form4.is_valid() and form4.cleaned_data['sweets']:
+        sweetss = form4.save(commit=False)
+        sweetss.owner = request.user
+        sweetss.save()
+        
+    
     context['form4']= form4
-    context["dataset4"] = Sweets.objects.all()
+    context["dataset4"] = Sweets.objects.filter(owner=request.user)
     template = loader.get_template('uploadmenu.html')
     return HttpResponse(template.render(context, request)) 
 
@@ -146,3 +176,106 @@ def delete4(request, id):
     sweetsone = Sweets.objects.get(id=int(id))
     sweetsone.delete()
     return HttpResponseRedirect(reverse_lazy('myapp:my_form'))
+
+def back_to_login(request):
+    return HttpResponseRedirect(reverse_lazy('myapp:login'))
+
+
+
+def menu(request):
+   
+    if request.method == 'POST':
+        form = MenuItemForm(request.POST)
+        if form.is_valid():
+            all = form.save(commit=False)
+            all.owner = request.user
+            all.save()
+            
+            return redirect('myapp:menu')
+    else:
+        form = MenuItemForm()
+    menu_item = MenuItem.objects.filter(owner=request.user)
+
+    charts = ['chart1', 'chart2','chart3','chart4',]
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    meals = ['Breakfast', 'Lunch', 'Dinner']
+    menu_chart = {}
+
+    for day in days:
+            menu_chart[day] = {}
+            for meal in meals:
+                menu_avialable = MenuItem.objects.filter(day=day[:3].lower(), meal=meal.lower(), owner=request.user)
+                if menu_avialable:
+                    menu_chart[day][meal] = menu_avialable[0].item
+                else:
+                    menu_chart[day][meal] = '-'
+    return render(request, 'menu.html', {'form': form, 'menu_item': menu_item, 'menu_chart': menu_chart, 'ls':ls})
+
+
+
+def deletemenu(request, id):
+    menuone = MenuItem.objects.get(id=int(id))
+    menuone.delete()
+    return HttpResponseRedirect(reverse_lazy('myapp:menu'))
+
+def post_it(request):
+    
+    charts = ['chart1', 'chart2', 'chart3', 'chart4']
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    meals = ['Breakfast', 'Lunch', 'Dinner']
+    for day in days:
+        #menu_chart[day] = {}
+        for meal in meals:
+            menu_avialable = MenuItem.objects.filter(day=day[:3].lower(), meal=meal.lower(), owner=request.user)
+            if menu_avialable:
+                 postdata = Post(day=day, meal=meal, item=menu_avialable[0].item, owner=request.user)
+                 postdata.save()
+            else:
+                postdata = Post(day=day, meal=meal, item="-", owner=request.user)
+                postdata.save()
+
+
+    menu_chart = {}
+    for day in days:
+        menu_chart[day] = {}
+        for meal in meals:
+            menu_items = Post.objects.filter(day=day[:3].lower(), meal=meal.lower(), owner=request.user)
+            if menu_items:
+                menu_chart[day][meal] = menu_items[0].item
+            else:
+                menu_chart[day][meal] = '-'
+
+    post_data_list = Post.objects.filter(owner=request.user)
+    print(post_data_list)
+    return render(request, 'profile.html', {'menu_chart':menu_chart})
+
+
+def automatic(request):
+    menu_item = MenuItem.objects.filter(owner=request.user)
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    meals = ['Breakfast', 'Lunch', 'Dinner']
+    menu_chart = {}
+    for day in days:
+        menu_chart[day] = {}
+        for meal in meals:
+            menu_avialable_snacks = Snacks.objects.filter(owner=request.user)
+            menu_avialable_garvy = Gravy.objects.filter(owner=request.user)
+            menu_avialable_normal = Normal.objects.filter(owner=request.user)
+            menu_avialable_sweets = Sweets.objects.filter(owner=request.user)
+            i = 0
+            if menu_avialable_snacks and meal=='Breakfast':
+                
+                menu_chart[day][meal] = menu_avialable_snacks[i].snacks
+                i = i + 1
+                
+            elif menu_avialable_normal and meal=='Lunch':
+                menu_chart[day][meal] = menu_avialable_normal[0].fullname
+            
+            elif menu_avialable_garvy and meal=='Dinner' and (day=='Monday' or day=='Wednesday' or day=='Friday' or day=='Sunday'):
+                menu_chart[day][meal] = menu_avialable_garvy[0].gravy
+            
+            elif menu_avialable_normal and meal=='Dinner' and (day=='Tuesday' or day=='Thursday' or day=='Saturday'):
+                menu_chart[day][meal] = menu_avialable_normal[0].fullname
+            else:
+                menu_chart[day][meal] = '-'
+    return render(request, 'menu.html', {'menu_item': menu_item ,'menu_chart': menu_chart})

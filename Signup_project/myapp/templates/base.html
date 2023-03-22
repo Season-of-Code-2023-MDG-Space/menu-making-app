@@ -10,9 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <style>
-                *{
-    background-color: rgb(57,57,59);
-    color: white;
+*{
+    
     font-family: 'Roboto', sans-serif;
 
 }
@@ -20,15 +19,17 @@
 .Meesy{
     font-style: italic;
     text-align: center;
+
 }
 
 chart table, th, td{
     border-style: solid;
-    align-text: center;
-    justify-: center;
-   
+    align-content: center;
+    justify-content: center;
+  
     border-collapse: collapse;
 }
+
 
 
 .TOPNAV a{
@@ -54,24 +55,77 @@ chart table, th, td{
     color:white;
     background-color:white;
 }
+.logo{
+    height:30px;
+    width: 30px;
+    position: relative;
+    filter: invert(100%);
+}
+.logo>img{
+    height: 155px;
+    width: 220px;
+    position: relative;
+    top: -42px;
+    left: 50px;
+}
+.navbar{
+    display: flex;
+    background:rgba(69, 30, 30, 0.858);
+    height: 114px;
+    margin:-9px;
+    opacity: 0.9;
+    padding:auto;
+    align-items:center;
+}
+#navitem{
+    position: relative;
+    left: 800px;
+    color: white;
+    height: 15px;
+    
+}
+#navitem:hover{
+    border: 3px solid white;
+    border-radius:100px;
+    background-color: white;
+    color: black;
+    font-weight: bolder;
+
+}
+*{
+    color: black;
+}
+td,th{
+    border: 2px solid black ;
+    border-radius: 10px;
+}
+.content{
+   background:rgb(253, 254, 254);
+   margin: 0px;
+   height: 100vh;
+    /* background-size: contain; */
+}
+
+
     </style>
 </head>
 <body>
     
-    <div class="Meesy"><h1>Meesy</h1></div>
-
+    <div class="navbar">
+    <div class = "logo"><img src= "https://www.logomaker.com/api/main/images/1j_ojVBBOMkX9Wyhfxe4hGfU26PD5QETmhPbi2c...ZzJP...ApukCk7xqs..._P0tdEhH7FAdxkpWM4NohSV9VokXiB1t_Dubb9QBCCsRmHVaE_QFG3g3N1CBD6jD8A55xsR13cof_nrMTjmzWXjUcMY...NMrAra13GIE3njPTLiQhsmd5QLcDMMrQA4U1hZeheP9N4HCWSJ9fc7XgUd37Bi4Rzw--" alt ="logo"></div>
     <div class="TOPNAV">
-        <a href="next" class="HOME">HOME</a>
-        <a href="profile" class="PROFILE">PROFILE</a>
-        <a href="createchart" class="CREATECHART">CREATE CHART</a>
-        <a href="uploadmenu" class="UPLOADDISHES">UPLOAD DISHES</a>
+        <a href="next" class="HOME" id ="navitem">HOME</a>
+        <a href="profile" class="PROFILE" id ="navitem">PROFILE</a>
+        <a href="createchart" class="CREATECHART" id ="navitem">CREATE CHART</a>
+        <a href="uploadmenu" class="UPLOADDISHES" id ="navitem">UPLOAD DISHES</a>
+        <a href="logout" class="LOGOUT" id ="navitem">Logout</a>
     </div>
-
-    <br><br><br>
-    <div class="content" name="content" id="content">
+    </div>
+    <section class="content" name="content" id="content">
         {% block content %}
 
         {% endblock %}
-    </div>
+    
+</section>
 </body>
 </html>

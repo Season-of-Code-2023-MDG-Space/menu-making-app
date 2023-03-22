@@ -1,7 +1,7 @@
 <style>
 .TOPNAV .UPLOADDISHES  {
     border-style: solid;
-    border-radius: 9px;
+    border-radius: 100px;
 }
 
 </style>
@@ -14,34 +14,28 @@
 <h3>NORMAL-VEGGIES</h3>
 <form   method="POST">
     {% csrf_token %}
-    
+    <ul>
     <div class="lass">
-        {% for data in dataset1 %}
-        <tr>
-        
-        <td> - {{ data.fullname }}</td>
-        <td><a href="delete/{{ data.id }}">delete</a></td> <br>
-        </tr>
+        {% for item in dataset1 %}
+            <li> {{item.fullname}} <a href="delete/{{ item.id }}">delete</a> </li>
         {% endfor %}
     </div>
-
+    </ul>
     {{form1.as_p}}
     <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
 
 <br>
 <h3>GRAVY-SABJI</h3>
-<form   method="POST">
+<form method="POST">
     {% csrf_token %}
     
+    <ul>
     <div class="lass">
-        {% for data in dataset2 %}
-        <tr>
-        
-        <td> - {{ data.gravy }}</td>
-        <td><a href="delete2/{{ data.id }}">delete</a></td> <br>
-        </tr>
+        {% for item in dataset2 %}
+            <li> {{item.gravy}} <a href="delete2/{{ item.id }}">delete</a> </li>
         {% endfor %}
     </div>
+    </ul>
 
     {{form2.as_p}}
     <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
@@ -51,15 +45,13 @@
 <form   method="POST">
     {% csrf_token %}
     
+    <ul>
     <div class="lass">
-        {% for data in dataset3 %}
-        <tr>
-        
-        <td> - {{ data.snacks }}</td>
-        <td><a href="delete3/{{ data.id }}">delete</a></td> <br>
-        </tr>
+        {% for item in dataset3 %}
+            <li> {{item.snacks}} <a href="delete3/{{ item.id }}">delete</a></li>
         {% endfor %}
     </div>
+    </ul>
 
     {{form3.as_p}}
     <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
@@ -69,15 +61,13 @@
 <form   method="POST">
     {% csrf_token %}
     
+    <ul>
     <div class="lass">
-        {% for data in dataset4 %}
-        <tr>
-        
-        <td> - {{ data.sweets }}</td>
-        <td><a href="delete4/{{ data.id }}">delete</a></td><br>
-        </tr>
+        {% for item in dataset4 %}
+            <li> {{item.sweets}} <a href="delete4/{{ item.id }}">delete</a></li>
         {% endfor %}
     </div>
+    </ul>
 
     {{form4.as_p}}
     <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>

@@ -18,7 +18,6 @@ from django.urls import path, include
 # from myapp import views
 from django.views.decorators.csrf import csrf_exempt
 
-# app_name = "my_app"
 
 urlpatterns = [
     path('admin/', admin.site.urls),

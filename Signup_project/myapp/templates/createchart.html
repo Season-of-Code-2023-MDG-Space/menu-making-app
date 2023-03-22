@@ -14,6 +14,8 @@
 
 <h3>Create Your Own Favorite chart !!</h3>
 <br> <br>
+
+
 <!--chart maker-->
 <div class="chart">
     <table>
@@ -31,15 +33,19 @@
 
             <tr>
                 <th>BREAKFAST</th>
-                <td ><select name="breakfast" id="breakfast">
+                <td >
+                
+                <select  onchange="this.form.submit()" name="breakfast" id="breakfast">
                     <option> Choose </option>
                    {% for data in dataset3 %}
-                    <option value="{{data.snacks.id}}">{{data.snacks}} </option>
-                    {% comment %} <option value="">mango </option> {% endcomment %}
+                    <option name="Snack"  value="{{data.snacks.id}}">{{data.snacks}} </option>
+                    
                     {% endfor %}
                     
                    
                 </select>
+               
+
                 <br>
                 Doodh <br>
                 Dalia <br>
