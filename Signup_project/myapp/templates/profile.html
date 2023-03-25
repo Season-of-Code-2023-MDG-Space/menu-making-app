@@ -6,12 +6,30 @@
 
 </style>
 {% extends 'base.html' %}
-   <!--{% for post_data in post_data_list %}-->
-        
-   <!-- {% endfor %} -->
-
-
+   
 
 {% block content %}
+<h3>Hey! Your chart for this week</h3>
+<table>
+		<thead>
+			<tr>
+				<th>Day</th>
+				<th>Breakfast</th>
+				<th>Lunch</th>
+				<th>Dinner</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for day, meals in menu_chart.items %}
+				<tr>
+					<td>{{ day }}</td>
+					{% for meal, item in meals.items %}
+						<td>{{ item }} <br> </td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
+   
 {% endblock %}

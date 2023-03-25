@@ -114,11 +114,11 @@ td,th{
     <div class="navbar">
     <div class = "logo"><img src= "https://www.logomaker.com/api/main/images/1j_ojVBBOMkX9Wyhfxe4hGfU26PD5QETmhPbi2c...ZzJP...ApukCk7xqs..._P0tdEhH7FAdxkpWM4NohSV9VokXiB1t_Dubb9QBCCsRmHVaE_QFG3g3N1CBD6jD8A55xsR13cof_nrMTjmzWXjUcMY...NMrAra13GIE3njPTLiQhsmd5QLcDMMrQA4U1hZeheP9N4HCWSJ9fc7XgUd37Bi4Rzw--" alt ="logo"></div>
     <div class="TOPNAV">
-        <a href="next" class="HOME" id ="navitem">HOME</a>
-        <a href="profile" class="PROFILE" id ="navitem">PROFILE</a>
-        <a href="createchart" class="CREATECHART" id ="navitem">CREATE CHART</a>
-        <a href="uploadmenu" class="UPLOADDISHES" id ="navitem">UPLOAD DISHES</a>
-        <a href="logout" class="LOGOUT" id ="navitem">Logout</a>
+        <a href="{% url 'myapp:next'  %}" class="HOME" id ="navitem">HOME</a>
+        <a href= "{% url 'myapp:profile' %}" class="PROFILE" id ="navitem">PROFILE</a>
+        <a href="{% url 'myapp:menu' %}" class="CREATECHART" id ="navitem">CREATE CHART</a>
+        <a href="{% url 'myapp:my_form' %}" class="UPLOADDISHES" id ="navitem">UPLOAD DISHES</a>
+        <a href="{% url 'myapp:back_to_login' %}" class="LOGOUT" id ="navitem">Logout</a>
     </div>
     </div>
     <section class="content" name="content" id="content">

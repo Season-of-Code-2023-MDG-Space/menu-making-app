@@ -46,6 +46,33 @@ class MenuName(models.Model):
 
     def __str__(self):
         return self.name_of_chart
+    
+class Charts(models.Model):
+    
+    menuname = models.ForeignKey(MenuName, on_delete=models.CASCADE, null=True)
+    DAY_CHOICES = (
+        ('mon', 'Monday'),
+        ('tue', 'Tuesday'),
+        ('wed', 'Wednesday'),
+        ('thu', 'Thursday'),
+        ('fri', 'Friday'),
+        ('sat', 'Saturday'),
+        ('sun', 'Sunday'),
+    )
+    MEAL_CHOICES = (
+        ('breakfast', 'Breakfast'),
+        ('lunch', 'Lunch'),
+        ('dinner', 'Dinner'),
+    )
+    
+    day = models.CharField(max_length=3, choices=DAY_CHOICES)
+    meal = models.CharField(max_length=9, choices=MEAL_CHOICES)
+    item = models.CharField(max_length=100, null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"{self.day} - {self.meal}: {self.item}"
+    
 
 class MenuItem(models.Model):
     
@@ -64,7 +91,6 @@ class MenuItem(models.Model):
         ('dinner', 'Dinner'),
     )
     
-    menuname = models.ForeignKey(MenuName, on_delete=models.CASCADE, null=True)
     day = models.CharField(max_length=3, choices=DAY_CHOICES)
     meal = models.CharField(max_length=9, choices=MEAL_CHOICES)
     item = models.CharField(max_length=100, null=True)

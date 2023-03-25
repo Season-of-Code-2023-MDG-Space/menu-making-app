@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect
 from .forms import signupform
-from .forms import NormalVeggie, GravyVeggie, SnacksMany, SweetsMany, MenuItemForm
+from .forms import NormalVeggie, GravyVeggie, SnacksMany, SweetsMany, MenuItemForm, CreateNewChart
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
-from .models import Normal, Gravy, Sweets, Snacks, MenuItem, Post, MenuName
+from .models import Normal, Gravy, Sweets, Snacks, MenuItem, Post, MenuName, Charts
 from django.http import HttpResponse, HttpResponseRedirect, response
 from django.urls import reverse_lazy
 from django.template import loader
@@ -46,18 +46,16 @@ def Profile(request):
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     meals = ['Breakfast', 'Lunch', 'Dinner']
     menu_chart = {}
+
     for day in days:
-        menu_chart[day] = {}
-        for meal in meals:
-            menu_avialable = MenuItem.objects.filter(day=day[:3].lower(), meal=meal.lower(), owner=request.user)
-           
-            if menu_avialable:
-                menu_chart[day][meal] = menu_avialable[0].item
-            else:
-                menu_chart[day][meal] = '-'
-    # huehue = MenuItem.objects.filter(owner=request.user)
-   
-    return render(request, 'profile.html')
+            menu_chart[day] = {}
+            for meal in meals:
+                menu_avialable = MenuItem.objects.filter(day=day[:3].lower(), meal=meal.lower(), owner=request.user)
+                if menu_avialable:
+                    menu_chart[day][meal] = menu_avialable[0].item
+                else:
+                    menu_chart[day][meal] = '-'
+    return render(request, 'profile.html', {"menu_chart":menu_chart})
 
     
 
@@ -183,7 +181,7 @@ def back_to_login(request):
 
 
 def menu(request):
-   
+    
     if request.method == 'POST':
         form = MenuItemForm(request.POST)
         if form.is_valid():
@@ -196,7 +194,7 @@ def menu(request):
         form = MenuItemForm()
     menu_item = MenuItem.objects.filter(owner=request.user)
 
-    charts = ['chart1', 'chart2','chart3','chart4',]
+    
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     meals = ['Breakfast', 'Lunch', 'Dinner']
     menu_chart = {}
@@ -209,9 +207,20 @@ def menu(request):
                     menu_chart[day][meal] = menu_avialable[0].item
                 else:
                     menu_chart[day][meal] = '-'
-    return render(request, 'menu.html', {'form': form, 'menu_item': menu_item, 'menu_chart': menu_chart, 'ls':ls})
+    return render(request, 'menu.html', {'form': form, 'menu_item': menu_item, 'menu_chart': menu_chart})
 
+#def NewChart(request, id):
+    ls = MenuName.objects.get(owner=request.user, id=id)
 
+    if request.method == "POST":
+        if request.POST.get("newitem"):
+           d = request.POST.get("newd")
+           m = request.POST.get("newm")
+           i = request.POST.get("newi")
+
+           ls.item_set.create(day=d, meal=m, item=i)
+
+    return render(request, "newchart.html", {"ls":ls})
 
 def deletemenu(request, id):
     menuone = MenuItem.objects.get(id=int(id))

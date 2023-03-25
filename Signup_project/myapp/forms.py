@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Normal, Gravy, Sweets, Snacks, Breakfast, MenuItem, Post
+from .models import Normal, Gravy, Sweets, Snacks, Breakfast, MenuItem, Post, MenuName, Charts
 
 class signupform(UserCreationForm):
     first_name = forms.CharField(max_length=50)
@@ -75,3 +75,8 @@ class MenuItemForm(forms.ModelForm):
         widgets = {'owner': forms.HiddenInput()}
 
 
+class CreateNewChart(forms.ModelForm):
+    class Meta:
+        model = MenuName
+        fields = ['name_of_chart']
+        widgets = {'owner': forms.HiddenInput()}

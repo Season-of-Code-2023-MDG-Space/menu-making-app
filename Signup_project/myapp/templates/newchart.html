@@ -1,0 +1,15 @@
+{% extends "base.html" }
+
+{% block content %}
+<h1> {{ls.name_of_chart}} </h1>
+
+<form method="POST", action"#">
+{% csrf_token %}
+    <input type="text" name="">
+    <ul>
+    {% for item in ls.item_set.all %}
+    <li> {{item.d}} </li>
+
+    {% endfor %}
+    <ul>
+</form>
