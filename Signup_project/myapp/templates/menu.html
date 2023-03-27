@@ -1,13 +1,53 @@
 <style>
-.TOPNAV .CREATECHART  {
-    border-style: solid;
-    border-radius: 9px;
+
+.menuask>h1{
+	text-align:center;
+	font-size:30px;
+}
+.menuask{
+	margin-left:550px;
+	border:2px solid black;
+	width:300px;
+	border-radius:20px;
+	backdrop-filter:blur(8px);
+}
+button[type="submit"]{
+	border:2px solid black;
+	border-radius:20px;
+	text-align:center;
+	display:block;
+	margin:auto;
+	width:100px;
+	height:30px;
+	background-color:#163932;
+	color:white;
+	transition:all 0.5s ease-in-out;
+}
+button[type="submit"]:hover{
+	box-shadow: 0px 0px 20px 8px black;
+	cursor:pointer;
+}
+ul{
+	list-style:circle;
+}
+.mainbox{
+	margin-left:200px;
+}
+.menuchart{
+	margin-left:630px;
+	font-size:30px;
+	padding-top:20px;
+}
+.mainbox2{
+	padding:10px;
+	margin-left:600px;
 }
 </style>
 
 {% extends 'base.html' %}
 
 {% block content%}
+<section class ="menuask">
 	<h1>Menu</h1>
 	<h2> {{ls.name}} </h2>
 	<form method="POST">
@@ -15,10 +55,10 @@
 		{{ form.as_p }}
 		<button type="submit">Save</button>
 	</form>
-
-	<h1>Menu Chart</h1>
-	<a href="automatic">AutoCreate</a>
-	<table>
+	</section>
+	<h1 class="menuchart">Menu Chart</h1>
+	
+	<table class="mainbox" style="width: 60%; height: 400px; text-align: center;">
 		<thead>
 			<tr>
 				<th>Day</th>
@@ -39,11 +79,11 @@
 		</tbody>
 	</table>
 
-	<a href="post_it">Post</a>
+	
 
-	<h2>Current Menu</h2>
+	<h2 class="menuchart">Current Menu</h2>
 	{% if menu_item %}
-		<table>
+		<table class="mainbox2">
 			<thead>
 				<tr>
 					<th>Day</th>
@@ -65,5 +105,46 @@
 	{% else %}
 		<p>No items in the menu yet.</p>
 	{% endif %}
+
+
+	<div class="scroll-box">
+  
+	<h3 ><u>NORMAL-VEGGIES</u></h3>
+	<ul>
+    <div class="lass">
+        {% for item in context.dataset1 %}
+            <li style="color: #163923"> {{item.fullname}} </li>
+        {% endfor %}
+    </div>
+    </ul>
+	<hr>
+	<h3><u>GRAVY-SABJI</u></h3>
+	<ul>
+    <div class="lass">
+        {% for item in context.dataset2 %}
+            <li style="color: #163923"> {{item.gravy}} </li>
+        {% endfor %}
+    </div>
+    </ul>
+	<hr>
+	<h3><u>SNACKS</u></h3>
+	<ul>
+    <div class="lass">
+        {% for item in context.dataset3 %}
+            <li style="color: #163923"> {{item.snacks}} </li>
+        {% endfor %}
+    </div>
+    </ul>
+	<hr>
+	<h3><u>SWEETS</u></h3>
+	<ul>
+    <div class="lass">
+        {% for item in context.dataset4 %}
+            <li style="color: #163923"> {{item.sweets}} </li>
+        {% endfor %}
+    </div>
+    </ul>
+	
+</div>
 {% endblock %}
 </html>

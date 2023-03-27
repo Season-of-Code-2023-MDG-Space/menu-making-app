@@ -1,9 +1,19 @@
-<style>
-.TOPNAV .UPLOADDISHES  {
-    border-style: solid;
-    border-radius: 100px;
-}
 
+<style>
+button[type="submit"]{
+	border:2px solid black;
+	border-radius:20px;
+	
+	width:100px;
+	height:30px;
+	background-color:#163932;
+	color:white;
+	transition:all 0.5s ease-in-out;
+}
+button[type="submit"]:hover{
+	box-shadow: 0px 0px 20px 8px black;
+	cursor:pointer;
+}
 </style>
 {% extends 'base.html' %}
 
@@ -14,65 +24,81 @@
 <h3>NORMAL-VEGGIES</h3>
 <form   method="POST">
     {% csrf_token %}
-    <ul>
-    <div class="lass">
-        {% for item in dataset1 %}
-            <li> {{item.fullname}} <a href="delete/{{ item.id }}">delete</a> </li>
-        {% endfor %}
-    </div>
-    </ul>
     {{form1.as_p}}
     <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
 
-<br>
+    <ul>
+    <div class="lass">
+        {% for item in dataset1 %}
+            
+            <li> {{item.fullname}} <a href="delete/{{ item.id }}"><b>(-)</b></a> </li>
+        {% endfor %}
+    </div>
+    </ul>
+    
+<hr>
 <h3>GRAVY-SABJI</h3>
 <form method="POST">
     {% csrf_token %}
-    
-    <ul>
-    <div class="lass">
-        {% for item in dataset2 %}
-            <li> {{item.gravy}} <a href="delete2/{{ item.id }}">delete</a> </li>
-        {% endfor %}
-    </div>
-    </ul>
-
     {{form2.as_p}}
     <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
 
-<br>
+    <ul>
+    <div class="lass">
+        {% for item in dataset2 %}
+            <li> {{item.gravy}} <a href="delete2/{{ item.id }}" ><b>(-)</b></a> </li>
+        {% endfor %}
+    </div>
+    </ul>
+
+    
+<br><hr>
 <h3>SNACKS</h3>
 <form   method="POST">
     {% csrf_token %}
-    
-    <ul>
-    <div class="lass">
-        {% for item in dataset3 %}
-            <li> {{item.snacks}} <a href="delete3/{{ item.id }}">delete</a></li>
-        {% endfor %}
-    </div>
-    </ul>
-
     {{form3.as_p}}
     <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
 
-<br>
-<h3>SWEETS</h3>
-<form   method="POST">
-    {% csrf_token %}
-    
     <ul>
     <div class="lass">
-        {% for item in dataset4 %}
-            <li> {{item.sweets}} <a href="delete4/{{ item.id }}">delete</a></li>
+        {% for item in dataset3 %}
+            <li> {{item.snacks}} <a href="delete3/{{ item.id }}"><b>(-)</b></a></li>
         {% endfor %}
     </div>
     </ul>
 
+    
+<br><hr>
+<h3>SWEETS</h3>
+<form   method="POST">
+    {% csrf_token %}
     {{form4.as_p}}
     <button type="submit" class="btn btn-primary" name="save" value="submit">New</button>
 
+    <ul>
+    <div class="lass">
+        {% for item in dataset4 %}
+            <li> {{item.sweets}} <a href="delete4/{{ item.id }}"><b>(-)</b></a></li>
+        {% endfor %}
+    </div>
+    </ul>
+
+    
 </form>
+
+
+{% comment %} <form  method="POST">
+{% csrf_token %}
+  <label for="query">Search for a dish:</label>
+  <input type="text" id="query" name="query">
+  <button type="submit">Search</button>
+</form>
+
+{% for recipe in parsed_results.Results %}
+    <h2>{{ recipe.Title }}</h2>
+    <img src="{{ recipe.Image }}" alt="{{ recipe.Title }}">
+    <a href="{% url 'view_recipe' recipe.Id %}">View recipe</a>
+{% endfor %} {% endcomment %}
 
 {% endblock %}
 

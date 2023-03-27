@@ -34,8 +34,8 @@ chart table, th, td{
 
 .TOPNAV a{
     float: left;
-    display: block;
-    color: black;
+   display: block;
+    color: #9B9B9B;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -70,11 +70,13 @@ chart table, th, td{
 }
 .navbar{
     display: flex;
-    background:rgba(69, 30, 30, 0.858);
+    background: #444141;
     height: 114px;
     margin:-9px;
-    opacity: 0.9;
-    padding:auto;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding:4px;
     align-items:center;
 }
 #navitem{
@@ -85,14 +87,11 @@ chart table, th, td{
     
 }
 #navitem:hover{
-    border: 3px solid white;
-    border-radius:100px;
-    background-color: white;
-    color: black;
-    font-weight: bolder;
+    color:green;
 
 }
 *{
+    font-family: 'Signika Negative', sans-serif;
     color: black;
 }
 td,th{
@@ -100,27 +99,79 @@ td,th{
     border-radius: 10px;
 }
 .content{
-   background:rgb(253, 254, 254);
    margin: 0px;
    height: 100vh;
     /* background-size: contain; */
 }
+.scroll-box {
+  position: fixed;
+  top: 112px;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #e49656;
+  border: 1px solid ;
+  overflow-y: scroll;
+  padding: 10px;
+}
 
+.scroll-box h2 {
+  margin-top: 0;
+}
 
+.scroll-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.scroll-box li {
+  margin-bottom: 10px;
+}
+
+.scroll-box label {
+  display: inline-block;
+  width: 100px;
+}
+
+body{
+    background-color: #e9a167;
+    height: 100%;
+}
+
+.menuask{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-item:center;
+}
+.username{
+    margin-left:200px;
+    font-size:30px;
+}
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap" rel="stylesheet">
 </head>
 <body>
     
     <div class="navbar">
-    <div class = "logo"><img src= "https://www.logomaker.com/api/main/images/1j_ojVBBOMkX9Wyhfxe4hGfU26PD5QETmhPbi2c...ZzJP...ApukCk7xqs..._P0tdEhH7FAdxkpWM4NohSV9VokXiB1t_Dubb9QBCCsRmHVaE_QFG3g3N1CBD6jD8A55xsR13cof_nrMTjmzWXjUcMY...NMrAra13GIE3njPTLiQhsmd5QLcDMMrQA4U1hZeheP9N4HCWSJ9fc7XgUd37Bi4Rzw--" alt ="logo"></div>
+    <div class = "logo"><h1 font-family: 'Roboto', sans-serif>MEAZY</h1></div>
+    
     <div class="TOPNAV">
-        <a href="{% url 'myapp:next'  %}" class="HOME" id ="navitem">HOME</a>
-        <a href= "{% url 'myapp:profile' %}" class="PROFILE" id ="navitem">PROFILE</a>
+        
+        <a href= "{% url 'myapp:profile' %}" class="PROFILE" id ="navitem">Home</a>
         <a href="{% url 'myapp:menu' %}" class="CREATECHART" id ="navitem">CREATE CHART</a>
         <a href="{% url 'myapp:my_form' %}" class="UPLOADDISHES" id ="navitem">UPLOAD DISHES</a>
         <a href="{% url 'myapp:back_to_login' %}" class="LOGOUT" id ="navitem">Logout</a>
     </div>
     </div>
+    <br><br><br><br><br>
+    
     <section class="content" name="content" id="content">
         {% block content %}
 

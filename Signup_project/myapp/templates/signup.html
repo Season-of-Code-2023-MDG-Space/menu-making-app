@@ -6,12 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <!--<link rel="stylesheet" href="login css.css">-->
+    <style>
+body{
+    background:grey;
+  }    
+  .menuask>h1{
+	text-align:center;
+	font-size:30px;
+}
+.menuask{
+	margin-left:550px;
+	border:2px solid black;
+	width:400px;
+	border-radius:20px;
+	backdrop-filter:blur(8px);
+  height: 600px
+}
+input[type="submit"]{
+	border:2px solid black;
+	border-radius:20px;
+	text-align:center;
+	display:block;
+	margin:auto;
+	width:100px;
+	height:30px;
+	background-color:#163932;
+	color:white;
+	transition:all 0.5s ease-in-out;
+}
+input[type="submit"]:hover{
+	box-shadow: 0px 0px 20px 8px black;
+	cursor:pointer;
+}
+button{
+  
+  text-align:center;
+	display:block;
+	margin:auto;
+	width:100px;
+	height:30px;
+	background-color: white;
+	color:black;
+	transition:all 0.5s ease-in-out;
+
+}
+button>a{
+text-decoration: none;
+}
+form{
+  text-align: center;
+}
+
+
+  </style>
 </head>
 <body>
     <div class="alert-box">
         <p class="alert"></p>
     </div>
-
+    <div class="menuask">
+    <h1>Sign Up</h1><br><br>
     <form action="" method="post">
         {% csrf_token %}
         {{form.as_p}}
@@ -26,6 +80,6 @@
         <input type="submit" value="submit">
     </form>
     <a href="login">already have an account ? log in here</a>
-
+</div>
 </body>
 </html>

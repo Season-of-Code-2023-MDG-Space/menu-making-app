@@ -1,7 +1,13 @@
 <style>
-.TOPNAV .PROFILE  {
-    border-style: solid;
-    border-radius: 100px;
+.content{
+	margin:auto;
+}
+
+.profilebody: before{
+	content :' ';
+	background
+	width: 100px;
+	height: 500px;
 }
 
 </style>
@@ -9,8 +15,15 @@
    
 
 {% block content %}
-<h3>Hey! Your chart for this week</h3>
-<table>
+{% if user.is_authenticated %}
+    <p class="username">Welcome, {{ user.username }}! </p>
+    {% endif %}
+<div class="profilebody">
+<h3 style="text-align: center; font-size:30px;">Hey! Your chart for this week</h3>
+
+<br>
+<div class="chart" style="padding-left: 300px;">
+<table class="table table-success table-striped" style="width: 70%; height: 400px; text-align: center;">
 		<thead>
 			<tr>
 				<th>Day</th>
@@ -22,7 +35,7 @@
 		<tbody>
 			{% for day, meals in menu_chart.items %}
 				<tr>
-					<td>{{ day }}</td>
+					<td >{{ day }}</td>
 					{% for meal, item in meals.items %}
 						<td>{{ item }} <br> </td>
 					{% endfor %}
@@ -30,6 +43,7 @@
 			{% endfor %}
 		</tbody>
 	</table>
-
+</div>
+</div>
    
 {% endblock %}

@@ -10,6 +10,9 @@ from django.urls import reverse_lazy
 from django.template import loader
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+import requests
+from spoonacular import API
+import json
 
 @csrf_exempt
 
@@ -35,7 +38,7 @@ def Login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request,user)
-            return redirect('myapp:next')
+            return redirect('myapp:profile')
 
     return render(request, 'login.html')
     
@@ -146,6 +149,13 @@ def my_form(request):
     
     context['form4']= form4
     context["dataset4"] = Sweets.objects.filter(owner=request.user)
+
+
+    # api = API('57fbffe56b594046b1a92aeaeabb3145')
+    # query = request.GET.get('query')
+    # results = api.search_recipes_complex(query=query)
+    # context['parsed_results'] = json.loads(results)
+    
     template = loader.get_template('uploadmenu.html')
     return HttpResponse(template.render(context, request)) 
 
@@ -207,7 +217,15 @@ def menu(request):
                     menu_chart[day][meal] = menu_avialable[0].item
                 else:
                     menu_chart[day][meal] = '-'
-    return render(request, 'menu.html', {'form': form, 'menu_item': menu_item, 'menu_chart': menu_chart})
+
+
+    context = {}
+    context["dataset1"] = Normal.objects.filter(owner=request.user)
+    context["dataset2"] = Gravy.objects.filter(owner=request.user)
+    context["dataset3"] = Snacks.objects.filter(owner=request.user)
+    context["dataset4"] = Sweets.objects.filter(owner=request.user)
+
+    return render(request, 'menu.html', {'form': form, 'menu_item': menu_item, 'menu_chart': menu_chart, 'context':context})
 
 #def NewChart(request, id):
     ls = MenuName.objects.get(owner=request.user, id=id)
